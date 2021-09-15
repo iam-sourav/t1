@@ -109,7 +109,59 @@ body {
   transform: translateX(8px);
 }
 /* --------------------------- Global End ------------------------------ */
+#loding{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #009fff;
+  z-index: 100;
+}
+#loding span{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(30vw);
+  height: calc(30vw);
+  border: #009fff solid 2px;
+  border-left: #0fff1b 2px solid; 
+  border-radius: 100px;
+  animation: load 1s linear infinite;
+}
+#loding span:nth-child(2){
+  width: calc(30vw + 5px);
+  height: calc(30vw + 5px);
+  border-left: #ffef13 2px solid;
+  animation: load 1.4s linear infinite;
+}
+#loding span:nth-child(3){
+  width: calc(30vw + 10px);
+  height: calc(30vw + 10px);
+  border-left: #2819fc 2px solid; 
+  animation: load 2s linear infinite;
+}
+#loding span:nth-child(4){
+  width: calc(30vw + 15px);
+  height: calc(30vw + 15px);
+  border-left: #ffffff 2px solid;
+  animation: load 1.2s linear infinite;
+}
 
+@keyframes load{
+  0%{
+    transform: rotate(0deg);
+  }100%{
+    transform: rotate(360deg);
+  }
+}
+
+#loding p{
+  position: absolute;
+  font-size: 1.4rem;
+}
 #fixed_items {
   height: calc(var(--size) / 2);
   width: 95vw;
@@ -178,7 +230,7 @@ body {
   width: calc(var(--size) / 3);
   height: calc(var(--size) / 3);
   right: calc(var(--size) / 2.1);
-  top: calc(var(--size-m) / 8);
+  top: calc(var(--size-m) / 5);
   border-radius: 100px;
   display: none;
   cursor: pointer;
