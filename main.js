@@ -1,3 +1,4 @@
+
 /* ----------------------------- Varibeles ------------------------- */
 const inputIs = _("#inputis");
 const body = _("body")[0];
