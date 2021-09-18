@@ -1,3 +1,8 @@
+/* when offline make website */
+delay()
+_("#loding")[0].style.display = "none";
+body.style.overflow = "scroll";
+
 function delay() {
   /* ----------------------------- Varibeles ------------------------- */
   const inputIs = _("#inputis");
@@ -17,6 +22,14 @@ function delay() {
   const projectMore = _(".project_more");
   const everyProject = _("#every_project")[0];
   let inputText = "";
+
+  /* ----- page changes ------ */
+  _("#go-login-page")[0].addEventListener('click', () => {
+    location.replace("./user/index.html");
+  })
+  _("#go-signup-page")[0].addEventListener('click', () => {
+    location.replace("./user/create.html");
+  })
   /*  ------------------ sortcart function -------------------------------*/
   // ----------create element--------
   // return class and id
