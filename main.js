@@ -1,33 +1,35 @@
 /* when offline make website */
 delay()
-_("#loding")[0].style.display = "none";
+$("#loding")[0].style.display = "none";
 body.style.overflow = "scroll";
 
 function delay() {
   /* ----------------------------- Varibeles ------------------------- */
-  const inputIs = _("#inputis");
-  const fixedAppList = _("#fixed_app_list")[0];
-  const floatingProject = _("#floating_project");
-  const fpic = _("#fpic")[0];
-  const pt_back_btn = _(".pt_back_btn");
-  const card_box1 = _(".card_list")[0];
-  const card_box2 = _(".card_list")[1];
-  const ulIs = _("#ulis");
-  const iIs = _("#iis");
-  const myLogo = _("#my_logo");
-  const gameList = _("#game_list");
-  const slide_btn = _(".slide_btn");
-  const previous = _("#previous");
-  const next = _("#next");
-  const projectMore = _(".project_more");
-  const everyProject = _("#every_project")[0];
+  const inputIs = $("#inputis");
+  const fixedAppList = $("#fixed_app_list")[0];
+  const floatingProject = $("#floating_project");
+  const fpic = $("#fpic")[0];
+  const pt_back_btn = $(".pt_back_btn");
+  const card_box1 = $(".card_list")[0];
+  const card_box2 = $(".card_list")[1];
+  const ulIs = $("#ulis");
+  const iIs = $("#iis");
+  const myLogo = $("#my_logo");
+  const gameList = $("#game_list");
+  const slide_btn = $(".slide_btn");
+  const previous = $("#previous");
+  const next = $("#next");
+  const projectMore = $(".project_more");
+  const everyProject = $("#every_project")[0];
   let inputText = "";
 
   /* ----- page changes ------ */
-  _("#go-login-page")[0].addEventListener('click', () => {
+  // go-login-page
+  $("#login_button")[0].addEventListener('click', () => {
     location.replace("./user/index.html");
   })
-  _("#go-signup-page")[0].addEventListener('click', () => {
+  // go-signup-page
+  $("#signup_button")[0].addEventListener('click', () => {
     location.replace("./user/create.html");
   })
   /*  ------------------ sortcart function -------------------------------*/
@@ -53,30 +55,20 @@ function delay() {
       storeElement.innerText = InnerText;
     return appendChild.appendChild(storeElement);
   }
-  // active class add
-  function ac(array) {
-    array.forEach((element) => {
-      element[0].classList.add("active");
-    });
-  }
-  // active claass remove
-  function rc(array) {
-    array.forEach((element) => {
-      element[0].classList.remove("active");
-    });
-  }
+
 
   // ----------create and remove app flotting tab -----------
   // afbb : app float back button
   function afbb(i) {
-    const appTab = _("#app_tab")[0];
+    const appTab = $("#app_tab")[0];
     appTab.style.display = "block";
     body.style.overflow = "hidden";
     appDT(i);
-    const backButton = _(".v_arrow");
+    const backButton = $(".v_arrow");
     backButton.o("click", () => {
       appTab.style.display = "none";
       body.style.overflow = "scroll";
+      removeClass([$("#account")], "click");
       while (fixedAppList.firstChild) {
         fixedAppList.removeChild(fixedAppList.firstChild);
       }
@@ -84,15 +76,16 @@ function delay() {
   }
   // gtsah : game tab show and hide
   function gtsah(i) {
-    const fixedUi = _("#fixed_ui")[0];
-    const gameTabx = _("#game_tab")[0];
+    const fixedUi = $("#fixed_ui")[0];
+    const gameTabx = $("#game_tab")[0];
     fixedUi.style.display = "block";
     body.style.overflow = "hidden";
     setTab(i);
-    const tabBack = _(".tab_back");
+    const tabBack = $(".tab_back");
     tabBack.o("click", () => {
       fixedUi.style.display = "none";
       body.style.overflow = "scroll";
+      removeClass([$("#account")], "click");
       while (gameTabx.firstChild) {
         gameTabx.removeChild(gameTabx.firstChild);
       }
@@ -102,13 +95,13 @@ function delay() {
   // iaad : input active and deactive
   function iaad(is) {
     if (is == "active") {
-      ac([myLogo, inputIs, ulIs, iIs]);
+      addClass([myLogo, inputIs, ulIs, iIs]);
       fixedItems.style.top = 0 + "px";
       slider.style.top = 0 + "px";
     } else if (is == "deactive") {
       inputIs[0].disabled = true;
       inputIs[0].disabled = false;
-      rc([myLogo, inputIs, ulIs, iIs]);
+      removeClass([myLogo, inputIs, ulIs, iIs]);
       setTimeout(() => {
         searchSagest[0].style.display = "none";
       }, 300);
@@ -236,10 +229,11 @@ function delay() {
     });
   }
 
-  const searchSagest = _("#search_sagest");
+  const searchSagest = $("#search_sagest");
   /* --------------------- Search Filter------------------------- */
-  _("#deleteText").o("click", () => {
+  $("#deleteText").o("click", () => {
     inputIs[0].value = "";
+    $("#deleteText")[0].style.display = "none";
   });
   inputIs.o("keyup", (e) => {
     trueResult = [];
@@ -271,7 +265,7 @@ function delay() {
           return parseInt(e.slice(en, e.length));
         } else return -1;
       });
-      const ih = _("#search_list")[0]; //input hiddener
+      const ih = $("#search_list")[0]; //input hiddener
       while (ih.firstChild) {
         ih.removeChild(ih.firstChild);
       }
@@ -284,17 +278,16 @@ function delay() {
       });
       if (onlyMatchIndex.every((e) => e === -1)) {
         searchSagest[0].style.display = "none";
-        _("#deleteText")[0].style.display = "none";
       } else {
         searchSagest[0].style.display = "block";
-        _("#deleteText")[0].style.display = "flex";
+        $("#deleteText")[0].style.display = "flex";
       }
       if (e.keyCode === 13) {
         if (trueResult.length > 0) gf(trueResult[0]);
       }
     } else {
       searchSagest[0].style.display = "none";
-      _("#deleteText")[0].style.display = "none";
+      $("#deleteText")[0].style.display = "none";
     }
   });
   iIs.o("click", () => {
@@ -316,6 +309,7 @@ function delay() {
         pt_back_btn.o("click", () => {
           floatingProject[0].style.display = "none";
           body.style.overflow = "scroll";
+          removeClass([$("#account")], "click");
           while (fpic.firstChild) {
             fpic.removeChild(fpic.firstChild);
           }
@@ -323,15 +317,15 @@ function delay() {
       }
       inputIs[0].value = "";
       iaad("deactive");
-      _("#deleteText")[0].style.display = "none";
+      $("#deleteText")[0].style.display = "none";
     }
     trueResult = [];
   }
 
   // ------------------------------------------------
-  const slider = _("#slider")[0];
-  const close = _(".close")[0];
-  const fixedItems = _("#fixed_items")[0];
+  const slider = $("#slider")[0];
+  const close = $(".close")[0];
+  const fixedItems = $("#fixed_items")[0];
 
   let bodyWidth = document.body.offsetWidth;
   let size_e = bodyWidth / 3.6;
@@ -346,17 +340,17 @@ function delay() {
   //   }
   // })
   try {
-    _("#menu").o("click", () => {
+    $("#menu").o("click", () => {
       if (bodyWidth <= 749) {
         slider.style.left = "0vw";
         close.style.zIndex = "11";
         body.style.overflow = "hidden";
       }
     });
-    _(".close").o("click", () => {
+    $(".close").o("click", () => {
       closeMenu();
     });
-    _(".close2").o("click", () => {
+    $(".close2").o("click", () => {
       closeMenu();
     });
     var closeMenu = () => {
@@ -364,6 +358,7 @@ function delay() {
         slider.style.left = `calc(var(--size-e) * -2.4)`;
         close.style.zIndex = "-1";
         body.style.overflow = "scroll";
+        removeClass([$("#account")], "click");
       }
     };
   } catch (err) {
@@ -418,30 +413,30 @@ function delay() {
   next.o("click", () => {
     projectClickScroll(1);
   });
-
   // -------------------------for scroll efect-----------------
   try {
     let pastScroll = 0,
       itemsTop = 0;
     window.onscroll = () => {
-      _(".list_name").s({ color: "#aaaaaa" });
-      if (dl(_("#home")[0])) {
-        _(".list_name")[0].style.color = "#ffffff";
+      $(".list_name").s({ color: "#aaaaaa" });
+      if (dl($("#home")[0])) {
+        $(".list_name")[0].style.color = "#ffffff";
         sall(false);
-      } else if (dl(_("#game_contener")[0])) {
+      } else if (dl($("#game_contener")[0])) {
         sall(false);
-        _(".list_name")[1].style.color = "#ffffff";
-      } else if (dl(_("#project_contener")[0])) {
+        $(".list_name")[1].style.color = "#ffffff";
+      } else if (dl($("#project_contener")[0])) {
         sall(false);
-        _(".list_name")[2].style.color = "#ffffff";
-      } else if (dl(_("#app_contener")[0])) {
-        _(".list_name")[3].style.color = "#ffffff";
+        $(".list_name")[2].style.color = "#ffffff";
+      } else if (dl($("#app_contener")[0])) {
+        $(".list_name")[3].style.color = "#ffffff";
         sall(false);
-      } else if (dl(_("#about_me")[0])) {
-        _(".list_name")[4].style.color = "#ffffff";
+      } else if (dl($("#about_me")[0])) {
+        $(".list_name")[4].style.color = "#ffffff";
         sall(true);
       }
       iaad("deactive");
+      removeClass([$("#account")], "click");
       bodyWidth = document.body.offsetWidth;
       searchSagest[0].style.display = "none";
 
@@ -465,10 +460,10 @@ function delay() {
     }
     // ------- sall --------//
     function sall(is) {
-      _(".sall").forEach((e, i) => {
+      $(".sall").forEach((e, i) => {
         let id = "#s" + (i + 1);
-        if (is) _(id)[0].classList.add("active");
-        else _(id)[0].classList.remove("active");
+        if (is) $(id)[0].classList.add("active");
+        else $(id)[0].classList.remove("active");
       });
     }
     // decact the scroll location
@@ -482,9 +477,9 @@ function delay() {
   }
 
   // -----------------add images in latest scroll list------------------
-  const scrolList = _("#scroll_list")[0];
-  const lgi = _(".img_boxs"); // lgi : latest games images
-  const lu = _("#latest_update");
+  const scrolList = $("#scroll_list")[0];
+  const lgi = $(".img_boxs"); // lgi : latest games images
+  const lu = $("#latest_update");
   lu[0].style.height = size_e * 2 + "px"; // for css
 
   let startX = 0,
@@ -502,16 +497,16 @@ function delay() {
   ];
   try {
     // create latest Game title and others //
-    _(".lg_name")[0].innerText =
+    $(".lg_name")[0].innerText =
       project_data.all_games[`g${allGamesLength - 1}`].name;
-    _(".lg_v")[0].innerText =
+    $(".lg_v")[0].innerText =
       "Version :" + project_data.all_games[`g${allGamesLength - 1}`].version;
 
     // movment //
     let timeRefrash = new Date();
     function updateIMG() {
       setTimeout(() => {
-        let lgix = _(".img_boxs");
+        let lgix = $(".img_boxs");
         lgiLength = lgix.length;
         for (let x = 0; x < lgiLength; x++) {
           scrolList.removeChild(lgix[x]);
@@ -595,12 +590,17 @@ function delay() {
     console.log(err);
   }
 
+  // user profile menu
+$("#account").o("click", (e) => {
+  addClass([$("#account")], "click");
+})
+
   // ----------------------------make game list----------------------------------
   // console.log(project_data.all_games["g" + 1].name);
 
   function setTab(i) {
     try {
-      const gameTab = _("#game_tab")[0];
+      const gameTab = $("#game_tab")[0];
       // back button
       const backBtn = ce("div", gameTab, ["back_button"]);
       const spanx = ce("span", backBtn, ["v_arrow", "back_press", "tab_back"]);
@@ -665,8 +665,8 @@ function delay() {
       );
     }
 
-    const gp = _(".G");
-    const fixedUi = _("#fixed_ui")[0];
+    const gp = $(".G");
+    const fixedUi = $("#fixed_ui")[0];
 
     gp.forEach((e, i) => {
       e.addEventListener("click", () => {
@@ -679,7 +679,7 @@ function delay() {
   }
 
   //   ------------------my project---------------------------
-  let everyProjectHeight = _("#every_project")[0].offsetHeight;
+  let everyProjectHeight = $("#every_project")[0].offsetHeight;
   let d1 = everyProjectHeight / 9;
 
   // --------make only project card---------
@@ -739,7 +739,7 @@ function delay() {
   }
 
   //  -------------------------------- make apps download -------------------------------------
-  const appList = _("#app_list")[0];
+  const appList = $("#app_list")[0];
 
   try {
     const app_ul = ce("ul", appList, [], undefined, ["app_ul"]);
@@ -851,13 +851,13 @@ function delay() {
       const app_download_btn = ce("div", fixedAppList, ["app_download_btn"]);
       const ati = ce("i", app_download_btn, ["fab", "fa-google-play"]);
       const adp = ce("h3", app_download_btn, [], "Download");
-      scrollMD(_(".app_images"));
+      scrollMD($(".app_images"));
     } catch (err) {
       console.log(err);
     }
   }
 
-  const apps = _(".app");
+  const apps = $(".app");
   try {
     apps.forEach((App, i) => {
       App.addEventListener("click", () => {
@@ -869,10 +869,10 @@ function delay() {
   }
 
   //--------------------------------- myProject omre button work -----------------------------
-  const pMore = _(".pmore");
-  const cardX = _(".card");
-  const card1 = _(".card1");
-  const card2 = _(".card2");
+  const pMore = $(".pmore");
+  const cardX = $(".card");
+  const card1 = $(".card1");
+  const card2 = $(".card2");
 
   let PmoreIs = true;
   everyProject.style.margin = "0px " + (bodyWidth - 310 * wd()) / 2 + "px";
@@ -929,8 +929,8 @@ function delay() {
   }
 
   //--------------------------------- app omre button -----------------------------
-  const appMore = _(".app_more");
-  moreForapp = _(".more_forapp");
+  const appMore = $(".app_more");
+  moreForapp = $(".more_forapp");
   let offser = myAppsLength >= 4 ? 4 : myAppsLength;
   appList.style.height = 120 * offser + "px"; // -----------css----------
   let AmoreIs = false;
@@ -950,7 +950,7 @@ function delay() {
   }
 
   // -------------------skill ------------------
-  const anid = _(".anid");
+  const anid = $(".anid");
   anid.forEach((e, i) => {
     e.style.animationDelay = i + "s";
   });
@@ -978,29 +978,29 @@ function delay() {
         everyProject.scrollLeft + 10 >=
         everyProject.scrollWidth - everyProject.clientWidth
       )
-        slide_btn[1].style.width = ac([_("#slide_b2")]);
-      else slide_btn[1].style.width = rc([_("#slide_b2")]);
+        slide_btn[1].style.width = addClass([$("#slide_b2")]);
+      else slide_btn[1].style.width = removeClass([$("#slide_b2")]);
       if (everyProject.scrollLeft - 5 <= 0)
-        slide_btn[0].style.width = ac([_("#slide_b1")]);
-      else slide_btn[0].style.width = rc([_("#slide_b1")]);
+        slide_btn[0].style.width = addClass([$("#slide_b1")]);
+      else slide_btn[0].style.width = removeClass([$("#slide_b1")]);
     }
     loop();
   }
 
-  _(".List").forEach((e, i) => {
+  $(".List").forEach((e, i) => {
     e.addEventListener("click", () => {
-      _(".list_name").s({ color: "#aaaaaa" });
-      _(".list_name")[i].style.color = "#ffffff";
+      $(".list_name").s({ color: "#aaaaaa" });
+      $(".list_name")[i].style.color = "#ffffff";
       if (i == 0) {
-        sud(_("#home")[0]);
+        sud($("#home")[0]);
       } else if (i == 1) {
-        sud(_("#game_contener")[0]);
+        sud($("#game_contener")[0]);
       } else if (i == 2) {
-        sud(_("#project_contener")[0]);
+        sud($("#project_contener")[0]);
       } else if (i == 3) {
-        sud(_("#app_contener")[0]);
+        sud($("#app_contener")[0]);
       } else if (i == 4) {
-        sud(_("#about_me")[0]);
+        sud($("#about_me")[0]);
       }
     });
   });

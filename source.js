@@ -1,4 +1,4 @@
-const body = _("body")[0];
+const body = $("body")[0];
 body.style.overflow = "hidden";
 
 let project_data = {
@@ -139,11 +139,11 @@ let project_data = {
 // downloadComplite
 //   .then((res) => {
 //     project_data = res;
-//     console.log(project_data); 
+//     console.log(project_data);  
 //     /* ----- all resorce download then setup my project -----*/
-//     delay()
-//     _("#loding")[0].style.display = "none";
-//     body.style.overflow = "scroll"; 
+//     // delay()
+//     // $("#loding")[0].style.display = "none";
+//     // body.style.overflow = "scroll";
 //   })
 //   .catch((err) => {
 //     console.log(err);
@@ -155,7 +155,7 @@ let project_data = {
  
 
 /* ------------------  push firebase ----------------------*/
-// () => {
+// (() => {
 //   const database = firebase.database();
 //   let i = 4;
 //   let databaseRef = database.ref().child(`project_data/my_apps/app${i}/`);
@@ -171,7 +171,6 @@ let project_data = {
 //     images: appND[i][8],
 //   };
 //   databaseRef.set(sendData);
-// };
-// ()
+// })(); 
 
 // console.log(project_data);

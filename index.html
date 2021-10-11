@@ -22,8 +22,8 @@
       href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap"
       rel="stylesheet"
     />
-  </head>
-  <body>
+  </head> 
+  <body> 
     <div id="loding">
       <span></span>
       <span></span>
@@ -97,7 +97,7 @@
           <div id="menu">
             <i class="fas fa-bars"></i>
           </div>
-          <div id="search_bar">
+          <div id="search_bar"> 
             <div id="search_items">
               <input
                 type="text"
@@ -113,18 +113,30 @@
               </div>
             </div>
           </div>
-          <div id="account"><i class="fas fa-user-circle"></i></div>
+          <!-- ############################################### -->
+          <div id="account">
+            <i class="fas fa-user-circle"></i>
+            <span></span>
+            <div id="profile_setting">
+              <div id="user_logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <p>LogOut</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div id="background_items">
         <div id="home" class="border-down">
           <div class="img_box1"></div>
           <div class="img_box2"></div>
-          <div id="login_button" class="buttons">
-            <h3 id="go-login-page">Login</h3>
-          </div>
-          <div id="signup_button" class="buttons">
-            <h3 id="go-signup-page">Signup</h3>
+          <div id="user_button" class="active">
+            <!-- ############################################## --> 
+            <div id="login_button" class="buttons">Login</div>
+            <div id="signup_button" class="buttons">Signup</div>
+            <div id="user_is">
+              <p>Welcome User</p> 
+            </div>
           </div>
         </div>
         <div id="game_contener" id="isgames">
@@ -263,15 +275,15 @@
             </ul>
           </div>
         </div>
-        <!-- <footer id="footer">
-            <div class="footer_top">
-              <h3>Source Begins</h3>
-              <p>contact me ></p>
-            </div>
-            <div class="footer_ground">
-              <p>copyright by &#169 sourav barui 2021</p> 
-            </div>
-          </footer> -->
+        <footer id="footer">
+          <div class="footer_top">
+            <h3>Source Begins</h3>
+            <p>contact me ></p>
+          </div>
+          <div class="footer_ground">
+            <p>copyright by &#169; sourav barui 2021</p>
+          </div>
+        </footer>
       </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
